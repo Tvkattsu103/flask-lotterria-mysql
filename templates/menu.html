@@ -1,0 +1,87 @@
+{% extends 'base.html' %} 
+{% include 'header.html' %} 
+
+{%block css %} 
+<style>
+    .menu-container{
+        display: grid; 
+        grid-template-columns: 320px 320px 320px 320px;
+        grid-gap: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 1320px;
+    }
+    .menu-item{
+        width: 300px; 
+        height: 440; 
+        border: 1px black solid; 
+        background-color: moccasin;
+    }
+    .menu-item-container{
+        width: 280px;
+        height: 420px;
+        display: flex; 
+        flex-direction: column; 
+        margin: 10px;
+    }
+    .menu-team-image-container{
+        width: 280px; 
+        height: 280px;  
+        flex: 5;
+    }
+    .menu-item-img{
+        width: 280px;
+        height: 280px;
+    }
+    .menu-item-name{
+        flex: 1.5; 
+        text-align: center;
+    }
+    .menu-item-price{
+        flex: 1; 
+        text-align: center; 
+        color: red;
+    }
+    .menu-item-description{
+        flex: 2.5; 
+        color: gray;
+        overflow: auto;
+    }
+</style>
+{% endblock %}
+{% block title %} Menu {% endblock %} 
+
+{% block body %}
+    <!-- {% for row in data %}
+        {% for i in range(4)%}      
+            <div style="width: 250px;height: 400px;border: 1px black solid; display: flex; flex-direction: column;">
+                <div class="image" style="width: 200px; height: 200px; margin: auto; margin-top:25px ; flex: 5;">
+                    <img src="{{row.image}}" alt="" style="width:200px ; height: 200px;" >
+                </div>
+                <div style="flex: 1;">
+                    <h1>{{row.foodname}}</h1>
+                </div>
+        {% endfor %}
+        {{url_for('static', filename ='images/7up.jpeg')}}
+    {% endfor %} -->
+    <div class="menu-container">          
+        {% for row in data %}      
+            <div class="menu-item">
+                <div class="menu-item-container">
+                    <div class="menu-team-image-container">
+                        <img class="menu-item-img" src="static/images/{{row.image}}.jpeg" alt="" >
+                    </div>
+                    <div class="menu-item-name">
+                        <h4 style="font-size:23px">{{row.foodname}}</h4>
+                    </div>
+                    <div class="menu-item-price">
+                        <span><b>{{row.price}} $</b></span>
+                    </div>
+                    <div class="menu-item-description">
+                        <span >{{row.description}}</span>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %} 
